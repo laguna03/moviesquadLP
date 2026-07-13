@@ -26,7 +26,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* =============================================
-   HEADER (Sin texto de marca)
+   HEADER
    ============================================= */
 .header-lp {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -38,7 +38,7 @@ a { text-decoration: none; color: inherit; }
 .header-container {
     display: flex; align-items: center; justify-content: space-between;
 }
-.header-left { width: 100px; } /* Espacio para equilibrar el nav a la derecha */
+.header-left { width: 100px; }
 .nav-lp { display: flex; gap: 24px; align-items: center; margin-left: auto; }
 .nav-link-lp { font-size: 0.85rem; color: var(--text-muted); transition: 0.3s; }
 .nav-link-lp:hover { color: var(--text); }
@@ -46,7 +46,7 @@ a { text-decoration: none; color: inherit; }
 .nav-cta-lp:hover { background: #C62836; }
 
 /* =============================================
-   HERO - LENTE CON LOGO REAL
+   HERO - LENTE
    ============================================= */
 .hero-lp {
     padding: 120px 0 80px; min-height: 80vh; display: flex; align-items: center; position: relative;
@@ -69,63 +69,41 @@ a { text-decoration: none; color: inherit; }
 .btn-hero-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); padding: 12px 28px; border-radius: 50px; font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
 .btn-hero-secondary:hover { background: rgba(255,255,255,0.05); }
 
-/* -------- EL LENTE -------- */
 .hero-visual-lp { display: flex; justify-content: center; align-items: center; perspective: 800px; }
 
 .camera-lens {
-    position: relative;
-    width: 320px; height: 320px;
-    border-radius: 50%;
+    position: relative; width: 320px; height: 320px; border-radius: 50%;
     background: radial-gradient(circle at 40% 35%, #1E1E20, #0A0A0C 60%, #050507);
     box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 20px 60px rgba(0,0,0,0.9), inset 0 0 40px rgba(0,0,0,0.8);
-    transform: rotateY(-4deg) rotateX(4deg);
-    transition: transform 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+    transform: rotateY(-4deg) rotateX(4deg); transition: transform 0.8s cubic-bezier(0.23, 1, 0.320, 1);
 }
 .camera-lens:hover { transform: rotateY(0deg) rotateX(0deg) scale(1.02); }
 
-/* Capa 1: Cuerpo de vidrio */
 .lens-body {
     position: absolute; inset: 0; border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.04) 0%, transparent 60%);
     pointer-events: none; z-index: 1;
 }
-
-/* Capa 2: Anillos de enfoque */
-.lens-ring {
-    position: absolute; border-radius: 50%; pointer-events: none; z-index: 2;
-}
+.lens-ring { position: absolute; border-radius: 50%; pointer-events: none; z-index: 2; }
 .focus-ring-1 { inset: 8px; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 0 10px rgba(0,0,0,0.5) inset; }
 .focus-ring-2 { inset: 14px; border: 1px solid rgba(230,57,70,0.15); }
 .focus-ring-3 { inset: 20px; border: 1px solid rgba(0,229,255,0.08); }
 
-/* Capa 3: El Centro (Contiene la imagen del logo) */
 .lens-core {
     position: absolute; inset: 28px; border-radius: 50%; z-index: 3;
     background: radial-gradient(circle at 50% 50%, #141416, #08080A 70%, #050507);
     display: flex; align-items: center; justify-content: center;
     box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
 }
-
-/* 🖼️ TU LOGO REAL DENTRO DEL LENTE */
-.core-logo-img {
-    width: 80%; /* Ajusta este porcentaje para que el logo encaje perfectamente */
-    height: auto;
-    max-width: 180px;
-    object-fit: contain;
-    display: block;
-    z-index: 5;
-}
-
-/* Reflejo de luz en el cristal */
+.core-logo-img { width: 80%; height: auto; max-width: 180px; object-fit: contain; display: block; z-index: 5; }
 .lens-glare {
-    position: absolute; top: -10%; left: -10%; width: 60%; height: 60%;
-    border-radius: 50%;
+    position: absolute; top: -10%; left: -10%; width: 60%; height: 60%; border-radius: 50%;
     background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
     transform: rotate(-30deg); pointer-events: none; z-index: 4;
 }
 
 /* =============================================
-   SERVICES & CONTACT
+   SERVICES - CON SIDE SCROLL EN MÓVIL
    ============================================= */
 .services-lp { padding: 80px 0; }
 .section-header-lp { text-align: center; max-width: 600px; margin: 0 auto 48px; }
@@ -136,14 +114,50 @@ a { text-decoration: none; color: inherit; }
 }
 .section-title-lp { font-size: 2.5rem; font-weight: 700; letter-spacing: -1px; }
 .section-desc-lp { font-size: 0.95rem; color: var(--text-muted); }
-.services-grid-lp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.service-card-lp { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 24px; text-align: center; transition: 0.3s; }
+
+.services-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 20px; /* Espacio para la barra de scroll nativa del navegador */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--brand-red) var(--surface); /* Firefox */
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+}
+
+/* Estilos para la barra de scroll en Chrome/Safari/Edge */
+.services-scroll-wrapper::-webkit-scrollbar {
+    height: 4px;
+}
+.services-scroll-wrapper::-webkit-scrollbar-track {
+    background: var(--surface);
+    border-radius: 10px;
+}
+.services-scroll-wrapper::-webkit-scrollbar-thumb {
+    background: var(--brand-red);
+    border-radius: 10px;
+}
+
+.services-grid-lp {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    /* En móvil esto se convierte en una fila horizontal infinita */
+}
+
+.service-card-lp {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 32px 24px;
+    text-align: center; transition: 0.3s; min-width: 260px; /* Ancho mínimo para que no se aplasten en móvil */
+}
 .service-card-lp:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px); }
 .service-icon-lp { color: var(--brand-red); margin-bottom: 16px; display: block; }
 .service-icon-lp svg { width: 32px; height: 32px; }
 .service-card-lp h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
 .service-card-lp p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
 
+/* =============================================
+   CONTACT
+   ============================================= */
 .contact-lp { padding: 80px 0; border-top: 1px solid var(--border); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .contact-text-lp { display: flex; flex-direction: column; gap: 16px; }
@@ -185,24 +199,43 @@ a { text-decoration: none; color: inherit; }
 .footer-links-lp .sep { color: var(--border); }
 
 /* =============================================
-   RESPONSIVE
+   RESPONSIVE - ACTIVACIÓN DEL SIDE SCROLL
    ============================================= */
 @media (max-width: 768px) {
     .header-lp { padding: 12px 0; }
     .nav-link-lp { display: none; }
     .header-left { width: 0; }
+
     .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .hero-text-lp { align-items: center; }
     .hero-desc-lp { max-width: 100%; }
     .hero-actions-lp { justify-content: center; }
     .camera-lens { width: 260px; height: 260px; }
     .core-logo-img { width: 70%; max-width: 140px; }
-    .services-grid-lp { grid-template-columns: 1fr; }
+
+    /* ----- ACTIVAMOS EL SIDE-SCROLL AQUÍ ----- */
+    .services-scroll-wrapper {
+        margin: 0 -24px; /* Para que el scroll ocupe todo el ancho de la pantalla */
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .services-grid-lp {
+        grid-template-columns: none; /* Eliminamos la cuadrícula fija */
+        display: flex;              /* Lo convertimos en una fila flexible */
+        gap: 16px;
+        width: max-content;         /* Forzamos que el ancho sea el total del contenido */
+    }
+    .service-card-lp {
+        min-width: 280px;           /* Ancho fijo para cada tarjeta en móvil */
+        padding: 24px 20px;
+    }
+
     .contact-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .contact-text-lp { align-items: center; }
     .contact-perks-lp { align-items: center; }
     .contact-form-lp { justify-content: center; }
     .form-card-lp { max-width: 100%; }
     .form-row-lp { grid-template-columns: 1fr; gap: 12px; }
+
     .footer-container { flex-direction: column; gap: 8px; text-align: center; }
 }

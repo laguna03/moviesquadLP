@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Squad PR | Promoción Cinematográfica</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- 🖼️ FAVICON AÑADIDO AQUÍ (Usa el mismo archivo que el logo) -->
+    <link rel="icon" type="image/png" href="moviesquad-logo.png">
+    <link rel="apple-touch-icon" href="moviesquad-logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,10 +22,9 @@
 </head>
 <body>
 
-    <!-- ===== HEADER (Sin texto de marca, solo navegación) ===== -->
+    <!-- ===== HEADER ===== -->
     <header class="header-lp" id="header">
         <div class="container header-container">
-            <!-- Espacio vacío a la izquierda para mantener el equilibrio -->
             <div class="header-left"></div>
             <nav class="nav-lp">
                 <a href="#services" class="nav-link-lp">Servicios</a>
@@ -34,7 +36,6 @@
     <!-- ===== HERO ===== -->
     <section class="hero-lp" id="home">
         <div class="container hero-grid">
-
             <div class="hero-text-lp">
                 <div class="hero-tag-lp">Confiable & Económico</div>
                 <h1 class="hero-title-lp">
@@ -52,21 +53,17 @@
             </div>
 
             <div class="hero-visual-lp">
-                <!-- Lente de Cámara con TU LOGO REAL adentro -->
                 <div class="camera-lens">
                     <div class="lens-body"></div>
                     <div class="lens-ring focus-ring-1"></div>
                     <div class="lens-ring focus-ring-2"></div>
                     <div class="lens-ring focus-ring-3"></div>
-
                     <div class="lens-core">
-                        <!-- 🖼️ AQUÍ ESTÁ TU LOGO REAL -->
                         <img src="moviesquad-logo.png" alt="Movie Squad PR" class="core-logo-img">
                         <div class="lens-glare"></div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -76,30 +73,32 @@
             <div class="section-header-lp">
                 <span class="section-tag-lp">Lo que hacemos</span>
                 <h2 class="section-title-lp">Damos voz a <span class="gradient">tu obra</span></h2>
-                <p class="section-desc-lp">Reseñas críticas, entrevistas de autor y estrategia digital para llevar tu proyecto al siguiente nivel.</p>
+                <p class="section-desc-lp">Reseñas críticas, entrevistas de autor y estrategia digital.</p>
             </div>
 
-            <div class="services-grid-lp">
-                <div class="service-card-lp">
-                    <div class="service-icon-lp">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="8" cy="16" r="2"></circle></svg>
+            <div class="services-scroll-wrapper">
+                <div class="services-grid-lp">
+                    <div class="service-card-lp">
+                        <div class="service-icon-lp">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="8" cy="16" r="2"></circle></svg>
+                        </div>
+                        <h3>Reseñas de Cine</h3>
+                        <p>Críticas profundas y honestas que destacan las fortalezas artísticas y técnicas de tu obra.</p>
                     </div>
-                    <h3>Reseñas de Cine</h3>
-                    <p>Críticas profundas y honestas que destacan las fortalezas artísticas y técnicas de tu obra.</p>
-                </div>
-                <div class="service-card-lp">
-                    <div class="service-icon-lp">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><line x1="8" y1="10" x2="16" y2="10"></line><line x1="8" y1="14" x2="14" y2="14"></line></svg>
+                    <div class="service-card-lp">
+                        <div class="service-icon-lp">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><line x1="8" y1="10" x2="16" y2="10"></line><line x1="8" y1="14" x2="14" y2="14"></line></svg>
+                        </div>
+                        <h3>Entrevistas Exclusivas</h3>
+                        <p>Charlas íntimas con tu equipo creativo para conectar con la audiencia.</p>
                     </div>
-                    <h3>Entrevistas Exclusivas</h3>
-                    <p>Charlas íntimas con tu equipo creativo para conectar con la audiencia.</p>
-                </div>
-                <div class="service-card-lp">
-                    <div class="service-icon-lp">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 2.72h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <div class="service-card-lp">
+                        <div class="service-icon-lp">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 2.72h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <h3>Promoción Digital</h3>
+                        <p>Estrategia de contenido para redes sociales y plataformas de streaming.</p>
                     </div>
-                    <h3>Promoción Digital</h3>
-                    <p>Estrategia de contenido para redes sociales y plataformas de streaming.</p>
                 </div>
             </div>
         </div>
@@ -108,7 +107,6 @@
     <!-- ===== CONTACT ===== -->
     <section class="contact-lp" id="contact">
         <div class="container contact-grid">
-
             <div class="contact-text-lp">
                 <span class="contact-tag-lp">Hablemos</span>
                 <h2 class="contact-title-lp">¿Listo para promocionar <span class="gradient">tu proyecto?</span></h2>
