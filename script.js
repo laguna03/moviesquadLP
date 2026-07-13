@@ -1,4 +1,136 @@
+/* =============================================
+   DICCIONARIO DE TRADUCCIONES (ES / EN)
+   ============================================= */
+const translations = {
+    es: {
+        'site.title': 'Movie Squad PR | Promoción Cinematográfica',
+        'nav.services': 'Servicios',
+        'nav.cta': 'Cotizar',
+        'hero.title1': 'Tu obra',
+        'hero.title2': 'merece ser vista',
+        'hero.desc': 'Promociona tu proyecto cinematográfico con reseñas profundas y entrevistas exclusivas. En Movie Squad PR ayudamos a cineastas, directores y productores a dar visibilidad a sus historias.',
+        'hero.cta_primary': 'Solicitar cotización',
+        'hero.cta_secondary': 'WhatsApp',
+        'services.tag': 'Lo que hacemos',
+        'services.title': 'Damos voz a tu obra',
+        'services.desc': 'Reseñas críticas, entrevistas de autor y estrategia digital.',
+        'services.s1.title': 'Reseñas de Cine',
+        'services.s1.desc': 'Críticas profundas y honestas que destacan las fortalezas artísticas y técnicas de tu obra.',
+        'services.s2.title': 'Entrevistas Exclusivas',
+        'services.s2.desc': 'Charlas íntimas con tu equipo creativo para conectar con la audiencia.',
+        'services.s3.title': 'Promoción Digital',
+        'services.s3.desc': 'Estrategia de contenido para redes sociales y plataformas de streaming.',
+        'contact.tag': 'Hablemos',
+        'contact.title': '¿Listo para promocionar tu proyecto?',
+        'contact.desc': 'Cuéntanos sobre tu obra cinematográfica y te responderemos con una estrategia personalizada en menos de 24 horas.',
+        'contact.perk1': 'Consulta gratuita',
+        'contact.perk2': 'Estrategia a medida',
+        'contact.perk3': 'Sin compromiso',
+        'contact.form_title': 'Solicitud de cotización',
+        'contact.form_sub': 'Cuéntanos sobre tu obra.',
+        'contact.f_name': 'Nombre',
+        'contact.f_email': 'Email',
+        'contact.f_phone': 'Teléfono',
+        'contact.f_service': 'Servicio',
+        'contact.f_service_opt1': 'Selecciona',
+        'contact.f_service_opt2': 'Reseña de Película',
+        'contact.f_service_opt3': 'Entrevista Exclusiva',
+        'contact.f_service_opt4': 'Promoción de Estreno',
+        'contact.f_service_opt5': 'Contenido para Redes',
+        'contact.f_service_opt6': 'Otro',
+        'contact.f_message': 'Mensaje',
+        'contact.f_submit': 'Enviar cotización',
+        'contact.f_alt': 'O contacta por WhatsApp',
+        'footer.location': 'San Juan, Puerto Rico'
+    },
+    en: {
+        'site.title': 'Movie Squad PR | Film Promotion',
+        'nav.services': 'Services',
+        'nav.cta': 'Quote',
+        'hero.title1': 'Your work',
+        'hero.title2': 'deserves to be seen',
+        'hero.desc': 'Promote your film project with in-depth reviews and exclusive interviews. At Movie Squad PR, we help filmmakers, directors, and producers give visibility to their stories.',
+        'hero.cta_primary': 'Get a Quote',
+        'hero.cta_secondary': 'WhatsApp',
+        'services.tag': 'What we do',
+        'services.title': 'We give voice to your work',
+        'services.desc': 'Critical reviews, author interviews, and digital strategy.',
+        'services.s1.title': 'Film Reviews',
+        'services.s1.desc': 'Deep and honest critiques that highlight the artistic and technical strengths of your work.',
+        'services.s2.title': 'Exclusive Interviews',
+        'services.s2.desc': 'Intimate talks with your creative team to connect with the audience.',
+        'services.s3.title': 'Digital Promotion',
+        'services.s3.desc': 'Content strategy for social media and streaming platforms.',
+        'contact.tag': "Let's Talk",
+        'contact.title': 'Ready to promote your project?',
+        'contact.desc': 'Tell us about your film work and we will respond with a personalized strategy in less than 24 hours.',
+        'contact.perk1': 'Free consultation',
+        'contact.perk2': 'Custom strategy',
+        'contact.perk3': 'No commitment',
+        'contact.form_title': 'Get a Quote',
+        'contact.form_sub': 'Tell us about your work.',
+        'contact.f_name': 'Name',
+        'contact.f_email': 'Email',
+        'contact.f_phone': 'Phone',
+        'contact.f_service': 'Service',
+        'contact.f_service_opt1': 'Select',
+        'contact.f_service_opt2': 'Film Review',
+        'contact.f_service_opt3': 'Exclusive Interview',
+        'contact.f_service_opt4': 'Premiere Promotion',
+        'contact.f_service_opt5': 'Social Media Content',
+        'contact.f_service_opt6': 'Other',
+        'contact.f_message': 'Message',
+        'contact.f_submit': 'Send Quote Request',
+        'contact.f_alt': 'Or contact us via WhatsApp',
+        'footer.location': 'San Juan, Puerto Rico'
+    }
+};
+
+/* =============================================
+   LÓGICA DE IDIOMA
+   ============================================= */
+let currentLang = localStorage.getItem('lang') || 'es';
+
+function applyTranslations(lang) {
+    const t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) {
+            el.textContent = t[key];
+        }
+    });
+
+    // Actualizar el atributo lang del HTML
+    document.documentElement.lang = lang;
+
+    // Actualizar el estado visual del botón
+    document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.classList.toggle('active', opt.dataset.lang === lang);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Aplicar el idioma guardado al cargar la página
+    applyTranslations(currentLang);
+
+    // Evento del botón de idioma
+    document.getElementById('langToggle').addEventListener('click', () => {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        localStorage.setItem('lang', currentLang);
+        applyTranslations(currentLang);
+    });
+
+    /* =============================================
+       NAVBAR SCROLL
+       ============================================= */
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* =============================================
+       EMAILJS (Formulario de contacto)
+       ============================================= */
     const EMAILJS_SERVICE_ID = 'service_2fjziv9';
     const EMAILJS_TEMPLATE_ID = 'template_saxwave';
 

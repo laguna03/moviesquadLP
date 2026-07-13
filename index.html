@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Squad PR | Promoción Cinematográfica</title>
+    <title data-i18n="site.title">Movie Squad PR | Promoción Cinematográfica</title>
 
-    <!-- 🖼️ FAVICON AÑADIDO AQUÍ (Usa el mismo archivo que el logo) -->
     <link rel="icon" type="image/png" href="moviesquad-logo.png">
     <link rel="apple-touch-icon" href="moviesquad-logo.png">
 
@@ -22,13 +21,19 @@
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER (Con botón de idioma) ===== -->
     <header class="header-lp" id="header">
         <div class="container header-container">
-            <div class="header-left"></div>
+            <div class="header-left">
+                <button class="lang-toggle" id="langToggle">
+                    <span class="lang-option active" data-lang="es">ES</span>
+                    <span class="lang-sep">/</span>
+                    <span class="lang-option" data-lang="en">EN</span>
+                </button>
+            </div>
             <nav class="nav-lp">
-                <a href="#services" class="nav-link-lp">Servicios</a>
-                <a href="#contact" class="nav-cta-lp">Cotizar</a>
+                <a href="#services" class="nav-link-lp" data-i18n="nav.services">Servicios</a>
+                <a href="#contact" class="nav-cta-lp" data-i18n="nav.cta">Cotizar</a>
             </nav>
         </div>
     </header>
@@ -37,18 +42,17 @@
     <section class="hero-lp" id="home">
         <div class="container hero-grid">
             <div class="hero-text-lp">
-                <div class="hero-tag-lp">Confiable & Económico</div>
                 <h1 class="hero-title-lp">
-                    <span class="light">Tu obra</span><br>
-                    <span class="gradient">merece ser vista</span>
+                    <span class="light" data-i18n="hero.title1">Tu obra</span><br>
+                    <span class="gradient" data-i18n="hero.title2">merece ser vista</span>
                 </h1>
-                <p class="hero-desc-lp">
+                <p class="hero-desc-lp" data-i18n="hero.desc">
                     Promociona tu proyecto cinematográfico con reseñas profundas y entrevistas exclusivas.
                     En Movie Squad PR ayudamos a cineastas, directores y productores a dar visibilidad a sus historias.
                 </p>
                 <div class="hero-actions-lp">
-                    <a href="#contact" class="btn-hero-primary">Solicitar cotización</a>
-                    <a href="https://wa.me/17875196060" target="_blank" class="btn-hero-secondary">WhatsApp</a>
+                    <a href="#contact" class="btn-hero-primary" data-i18n="hero.cta_primary">Solicitar cotización</a>
+                    <a href="https://wa.me/17875196060" target="_blank" class="btn-hero-secondary" data-i18n="hero.cta_secondary">WhatsApp</a>
                 </div>
             </div>
 
@@ -71,9 +75,9 @@
     <section class="services-lp" id="services">
         <div class="container">
             <div class="section-header-lp">
-                <span class="section-tag-lp">Lo que hacemos</span>
-                <h2 class="section-title-lp">Damos voz a <span class="gradient">tu obra</span></h2>
-                <p class="section-desc-lp">Reseñas críticas, entrevistas de autor y estrategia digital.</p>
+                <span class="section-tag-lp" data-i18n="services.tag">Lo que hacemos</span>
+                <h2 class="section-title-lp" data-i18n="services.title">Damos voz a <span class="gradient">tu obra</span></h2>
+                <p class="section-desc-lp" data-i18n="services.desc">Reseñas críticas, entrevistas de autor y estrategia digital.</p>
             </div>
 
             <div class="services-scroll-wrapper">
@@ -82,22 +86,22 @@
                         <div class="service-icon-lp">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="8" cy="16" r="2"></circle></svg>
                         </div>
-                        <h3>Reseñas de Cine</h3>
-                        <p>Críticas profundas y honestas que destacan las fortalezas artísticas y técnicas de tu obra.</p>
+                        <h3 data-i18n="services.s1.title">Reseñas de Cine</h3>
+                        <p data-i18n="services.s1.desc">Críticas profundas y honestas que destacan las fortalezas artísticas y técnicas de tu obra.</p>
                     </div>
                     <div class="service-card-lp">
                         <div class="service-icon-lp">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><line x1="8" y1="10" x2="16" y2="10"></line><line x1="8" y1="14" x2="14" y2="14"></line></svg>
                         </div>
-                        <h3>Entrevistas Exclusivas</h3>
-                        <p>Charlas íntimas con tu equipo creativo para conectar con la audiencia.</p>
+                        <h3 data-i18n="services.s2.title">Entrevistas Exclusivas</h3>
+                        <p data-i18n="services.s2.desc">Charlas íntimas con tu equipo creativo para conectar con la audiencia.</p>
                     </div>
                     <div class="service-card-lp">
                         <div class="service-icon-lp">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 2.72h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         </div>
-                        <h3>Promoción Digital</h3>
-                        <p>Estrategia de contenido para redes sociales y plataformas de streaming.</p>
+                        <h3 data-i18n="services.s3.title">Promoción Digital</h3>
+                        <p data-i18n="services.s3.desc">Estrategia de contenido para redes sociales y plataformas de streaming.</p>
                     </div>
                 </div>
             </div>
@@ -108,63 +112,63 @@
     <section class="contact-lp" id="contact">
         <div class="container contact-grid">
             <div class="contact-text-lp">
-                <span class="contact-tag-lp">Hablemos</span>
-                <h2 class="contact-title-lp">¿Listo para promocionar <span class="gradient">tu proyecto?</span></h2>
-                <p class="contact-desc-lp">Cuéntanos sobre tu obra cinematográfica y te responderemos con una estrategia personalizada en menos de 24 horas.</p>
+                <span class="contact-tag-lp" data-i18n="contact.tag">Hablemos</span>
+                <h2 class="contact-title-lp" data-i18n="contact.title">¿Listo para promocionar <span class="gradient">tu proyecto?</span></h2>
+                <p class="contact-desc-lp" data-i18n="contact.desc">Cuéntanos sobre tu obra cinematográfica y te responderemos con una estrategia personalizada en menos de 24 horas.</p>
                 <div class="contact-perks-lp">
-                    <div class="perk-item">Consulta gratuita</div>
-                    <div class="perk-item">Estrategia a medida</div>
-                    <div class="perk-item">Sin compromiso</div>
+                    <div class="perk-item" data-i18n="contact.perk1">Consulta gratuita</div>
+                    <div class="perk-item" data-i18n="contact.perk2">Estrategia a medida</div>
+                    <div class="perk-item" data-i18n="contact.perk3">Sin compromiso</div>
                 </div>
             </div>
 
             <div class="contact-form-lp">
                 <div class="form-card-lp">
                     <div class="form-header-lp">
-                        <h3>Solicitud de cotización</h3>
-                        <p>Cuéntanos sobre tu obra.</p>
+                        <h3 data-i18n="contact.form_title">Solicitud de cotización</h3>
+                        <p data-i18n="contact.form_sub">Cuéntanos sobre tu obra.</p>
                     </div>
 
                     <form class="form-lp" id="contactForm">
                         <div class="form-row-lp">
                             <div class="form-group-lp">
-                                <label>Nombre</label>
+                                <label data-i18n="contact.f_name">Nombre</label>
                                 <input type="text" id="from_name" name="from_name" placeholder="Juan Pérez" required>
                             </div>
                             <div class="form-group-lp">
-                                <label>Email</label>
+                                <label data-i18n="contact.f_email">Email</label>
                                 <input type="email" id="email" name="reply_to" placeholder="juan@proyecto.com" required>
                             </div>
                         </div>
 
                         <div class="form-row-lp">
                             <div class="form-group-lp">
-                                <label>Teléfono</label>
+                                <label data-i18n="contact.f_phone">Teléfono</label>
                                 <input type="tel" id="phone" name="phone" placeholder="787-000-0000" required>
                             </div>
                             <div class="form-group-lp">
-                                <label>Servicio</label>
+                                <label data-i18n="contact.f_service">Servicio</label>
                                 <select id="service" name="service">
-                                    <option value="">Selecciona</option>
-                                    <option value="Reseña de Película">Reseña de Película</option>
-                                    <option value="Entrevista Exclusiva">Entrevista Exclusiva</option>
-                                    <option value="Promoción de Estreno">Promoción de Estreno</option>
-                                    <option value="Contenido para Redes">Contenido para Redes</option>
-                                    <option value="Otro">Otro</option>
+                                    <option value="" data-i18n="contact.f_service_opt1">Selecciona</option>
+                                    <option value="Reseña de Película" data-i18n="contact.f_service_opt2">Reseña de Película</option>
+                                    <option value="Entrevista Exclusiva" data-i18n="contact.f_service_opt3">Entrevista Exclusiva</option>
+                                    <option value="Promoción de Estreno" data-i18n="contact.f_service_opt4">Promoción de Estreno</option>
+                                    <option value="Contenido para Redes" data-i18n="contact.f_service_opt5">Contenido para Redes</option>
+                                    <option value="Otro" data-i18n="contact.f_service_opt6">Otro</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group-lp">
-                            <label>Mensaje</label>
+                            <label data-i18n="contact.f_message">Mensaje</label>
                             <textarea id="message" name="message" rows="3" placeholder="Describe tu proyecto cinematográfico..." required></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit-lp">
+                        <button type="submit" class="btn-submit-lp" data-i18n="contact.f_submit">
                             Enviar cotización
                             <span class="arrow-submit">→</span>
                         </button>
-                        <p class="form-alt-lp">O contacta por <a href="https://wa.me/17875196060" target="_blank">WhatsApp</a></p>
+                        <p class="form-alt-lp" data-i18n="contact.f_alt">O contacta por <a href="https://wa.me/17875196060" target="_blank">WhatsApp</a></p>
                     </form>
                 </div>
             </div>
@@ -175,7 +179,7 @@
     <!-- ===== FOOTER ===== -->
     <footer class="footer-lp">
         <div class="container footer-container">
-            <span>San Juan, Puerto Rico</span>
+            <span data-i18n="footer.location">San Juan, Puerto Rico</span>
             <div class="footer-links-lp">
                 <a href="mailto:moviesquadpr@gmail.com">moviesquadpr@gmail.com</a>
                 <span class="sep">·</span>

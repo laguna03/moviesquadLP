@@ -239,3 +239,36 @@ a { text-decoration: none; color: inherit; }
 
     .footer-container { flex-direction: column; gap: 8px; text-align: center; }
 }
+
+/* =============================================
+   BOTÓN DE IDIOMA (ES/EN)
+   ============================================= */
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-family: var(--ff);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: 0.3s;
+}
+.lang-toggle:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+}
+.lang-option {
+    transition: color 0.3s;
+}
+.lang-option.active {
+    color: var(--text);
+}
+.lang-sep {
+    color: var(--text-subtle);
+    font-weight: 300;
+}
