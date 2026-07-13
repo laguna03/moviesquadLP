@@ -100,20 +100,15 @@ function applyTranslations(lang) {
         }
     });
 
-    // Actualizar el atributo lang del HTML
     document.documentElement.lang = lang;
-
-    // Actualizar el estado visual del botón
     document.querySelectorAll('.lang-option').forEach(opt => {
         opt.classList.toggle('active', opt.dataset.lang === lang);
     });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Aplicar el idioma guardado al cargar la página
     applyTranslations(currentLang);
 
-    // Evento del botón de idioma
     document.getElementById('langToggle').addEventListener('click', () => {
         currentLang = currentLang === 'es' ? 'en' : 'es';
         localStorage.setItem('lang', currentLang);
