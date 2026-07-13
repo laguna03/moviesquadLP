@@ -38,12 +38,38 @@ a { text-decoration: none; color: inherit; }
 .header-container {
     display: flex; align-items: center; justify-content: space-between;
 }
-.header-left { width: 100px; }
+.header-left { display: flex; align-items: center; gap: 16px; }
 .nav-lp { display: flex; gap: 24px; align-items: center; margin-left: auto; }
 .nav-link-lp { font-size: 0.85rem; color: var(--text-muted); transition: 0.3s; }
 .nav-link-lp:hover { color: var(--text); }
 .nav-cta-lp { background: var(--brand-red); color: #fff; padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 500; transition: 0.3s; }
 .nav-cta-lp:hover { background: #C62836; }
+
+/* =============================================
+   BOTÓN DE IDIOMA (ES/EN)
+   ============================================= */
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-family: var(--ff);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: 0.3s;
+}
+.lang-toggle:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.15);
+}
+.lang-option { transition: color 0.3s; }
+.lang-option.active { color: var(--text); }
+.lang-sep { color: var(--text-subtle); font-weight: 300; }
 
 /* =============================================
    HERO - LENTE
@@ -53,11 +79,6 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .hero-text-lp { display: flex; flex-direction: column; gap: 24px; }
-.hero-tag-lp {
-    display: inline-block; font-size: 0.65rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--brand-red); background: rgba(230,57,70,0.08); border: 1px solid rgba(230,57,70,0.1);
-    padding: 4px 14px; border-radius: 50px; width: fit-content;
-}
 .hero-title-lp {
     font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px;
 }
@@ -118,36 +139,25 @@ a { text-decoration: none; color: inherit; }
 .services-scroll-wrapper {
     width: 100%;
     overflow-x: auto;
-    padding-bottom: 20px; /* Espacio para la barra de scroll nativa del navegador */
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: var(--brand-red) var(--surface); /* Firefox */
-    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    padding-bottom: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--brand-red) var(--surface);
+    -webkit-overflow-scrolling: touch;
 }
-
-/* Estilos para la barra de scroll en Chrome/Safari/Edge */
-.services-scroll-wrapper::-webkit-scrollbar {
-    height: 4px;
-}
-.services-scroll-wrapper::-webkit-scrollbar-track {
-    background: var(--surface);
-    border-radius: 10px;
-}
-.services-scroll-wrapper::-webkit-scrollbar-thumb {
-    background: var(--brand-red);
-    border-radius: 10px;
-}
+.services-scroll-wrapper::-webkit-scrollbar { height: 4px; }
+.services-scroll-wrapper::-webkit-scrollbar-track { background: var(--surface); border-radius: 10px; }
+.services-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--brand-red); border-radius: 10px; }
 
 .services-grid-lp {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    /* En móvil esto se convierte en una fila horizontal infinita */
 }
 
 .service-card-lp {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 32px 24px;
-    text-align: center; transition: 0.3s; min-width: 260px; /* Ancho mínimo para que no se aplasten en móvil */
+    text-align: center; transition: 0.3s;
 }
 .service-card-lp:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px); }
 .service-icon-lp { color: var(--brand-red); margin-bottom: 16px; display: block; }
@@ -199,76 +209,48 @@ a { text-decoration: none; color: inherit; }
 .footer-links-lp .sep { color: var(--border); }
 
 /* =============================================
-   RESPONSIVE - ACTIVACIÓN DEL SIDE SCROLL
+   RESPONSIVE - CORRECCIÓN DE TARJETAS EN MÓVIL
    ============================================= */
 @media (max-width: 768px) {
     .header-lp { padding: 12px 0; }
     .nav-link-lp { display: none; }
-    .header-left { width: 0; }
-
+    .header-left { gap: 8px; }
+    
     .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .hero-text-lp { align-items: center; }
     .hero-desc-lp { max-width: 100%; }
     .hero-actions-lp { justify-content: center; }
     .camera-lens { width: 260px; height: 260px; }
     .core-logo-img { width: 70%; max-width: 140px; }
-
-    /* ----- ACTIVAMOS EL SIDE-SCROLL AQUÍ ----- */
+    
+    /* ----- SIDE-SCROLL Y TARJETAS CORREGIDAS ----- */
     .services-scroll-wrapper {
-        margin: 0 -24px; /* Para que el scroll ocupe todo el ancho de la pantalla */
+        margin: 0 -24px;
         padding-left: 24px;
         padding-right: 24px;
     }
     .services-grid-lp {
-        grid-template-columns: none; /* Eliminamos la cuadrícula fija */
-        display: flex;              /* Lo convertimos en una fila flexible */
+        grid-template-columns: none;
+        display: flex;
         gap: 16px;
-        width: max-content;         /* Forzamos que el ancho sea el total del contenido */
+        width: max-content;
     }
     .service-card-lp {
-        min-width: 280px;           /* Ancho fijo para cada tarjeta en móvil */
+        min-width: 260px;
+        min-height: 260px;
         padding: 24px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-
+    
     .contact-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .contact-text-lp { align-items: center; }
     .contact-perks-lp { align-items: center; }
     .contact-form-lp { justify-content: center; }
     .form-card-lp { max-width: 100%; }
     .form-row-lp { grid-template-columns: 1fr; gap: 12px; }
-
+    
     .footer-container { flex-direction: column; gap: 8px; text-align: center; }
-}
-
-/* =============================================
-   BOTÓN DE IDIOMA (ES/EN)
-   ============================================= */
-.lang-toggle {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    border-radius: 50px;
-    padding: 4px 12px;
-    cursor: pointer;
-    font-family: var(--ff);
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    transition: 0.3s;
-}
-.lang-toggle:hover {
-    background: rgba(255,255,255,0.08);
-    border-color: rgba(255,255,255,0.15);
-}
-.lang-option {
-    transition: color 0.3s;
-}
-.lang-option.active {
-    color: var(--text);
-}
-.lang-sep {
-    color: var(--text-subtle);
-    font-weight: 300;
 }
