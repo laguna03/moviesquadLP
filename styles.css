@@ -128,7 +128,7 @@ a { text-decoration: none; color: inherit; }
 .section-title-lp { font-size: 2.5rem; font-weight: 700; letter-spacing: -1px; }
 .section-desc-lp { font-size: 0.95rem; color: var(--text-muted); }
 
-.services-scroll-wrapper { width: 100%; overflow-x: auto; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--brand-red) var(--surface); -webkit-overflow-scrolling: touch; }
+.services-scroll-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--brand-red) var(--surface); -webkit-overflow-scrolling: touch; }
 .services-scroll-wrapper::-webkit-scrollbar { height: 4px; }
 .services-scroll-wrapper::-webkit-scrollbar-track { background: var(--surface); border-radius: 10px; }
 .services-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--brand-red); border-radius: 10px; }
@@ -139,7 +139,7 @@ a { text-decoration: none; color: inherit; }
    INTERVIEWS (Desktop)
    ============================================= */
 .interviews-lp { padding: 80px 0; position: relative; z-index: 1; }
-.interviews-scroll-wrapper { width: 100%; overflow-x: auto; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--brand-red) var(--surface); -webkit-overflow-scrolling: touch; }
+.interviews-scroll-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--brand-red) var(--surface); -webkit-overflow-scrolling: touch; }
 .interviews-scroll-wrapper::-webkit-scrollbar { height: 4px; }
 .interviews-scroll-wrapper::-webkit-scrollbar-track { background: var(--surface); border-radius: 10px; }
 .interviews-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--brand-red); border-radius: 10px; }
@@ -205,7 +205,7 @@ a { text-decoration: none; color: inherit; }
 .footer-links-lp .sep { color: var(--border); }
 
 /* =============================================
-   RESPONSIVE - CARRUSEL CON SNAP EN MÓVIL
+   RESPONSIVE - CARRUSEL CON SNAP EN MÓVIL (Corregido: Solo scroll lateral)
    ============================================= */
 @media (max-width: 768px) {
     .header-lp { padding: 12px 0; }
@@ -218,14 +218,16 @@ a { text-decoration: none; color: inherit; }
     .camera-lens { width: 260px; height: 260px; }
     .core-logo-img { width: 70%; max-width: 140px; }
 
-    /* ===== SERVICES CAROUSEL ===== */
+    /* ===== SERVICES CAROUSEL (Only side scroll) ===== */
     .services-scroll-wrapper {
         margin: 0 -24px;
         padding-left: 24px;
         padding-right: 24px;
         padding-bottom: 16px;
-        scroll-snap-type: x mandatory;   /* 🔥 Activa el snap en el contenedor */
-        scroll-padding: 24px;            /* 🔥 Alinea el padding con el inicio */
+        scroll-snap-type: x mandatory;
+        scroll-padding: 24px;
+        overflow-x: auto;
+        overflow-y: hidden; /* 🔥 EVITA EL SCROLL VERTICAL */
     }
     .services-grid-lp {
         grid-template-columns: none;
@@ -244,24 +246,26 @@ a { text-decoration: none; color: inherit; }
         justify-content: flex-start;
         align-items: center;
         gap: 8px;
-        scroll-snap-align: start;        /* 🔥 La tarjeta encaja al inicio */
+        scroll-snap-align: start;
     }
     .service-card-lp h3 { font-size: 1rem; }
     .service-card-lp p { font-size: 0.85rem; line-height: 1.5; }
 
-    /* ===== INTERVIEWS CAROUSEL ===== */
+    /* ===== INTERVIEWS CAROUSEL (Only side scroll) ===== */
     .interviews-scroll-wrapper {
         margin: 0 -24px;
         padding-left: 24px;
         padding-right: 24px;
-        scroll-snap-type: x mandatory;   /* 🔥 Activa el snap en el contenedor */
-        scroll-padding: 24px;            /* 🔥 Alinea el padding con el inicio */
+        scroll-snap-type: x mandatory;
+        scroll-padding: 24px;
+        overflow-x: auto;
+        overflow-y: hidden; /* 🔥 EVITA EL SCROLL VERTICAL */
     }
     .interview-card {
         min-width: 280px;
         max-width: 280px;
         padding: 16px;
-        scroll-snap-align: start;        /* 🔥 La tarjeta encaja al inicio */
+        scroll-snap-align: start;
     }
 
     /* ===== CONTACT ===== */
