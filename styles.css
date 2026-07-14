@@ -71,7 +71,7 @@ a { text-decoration: none; color: inherit; }
 .lang-sep { color: var(--text-subtle); font-weight: 300; }
 
 /* =============================================
-   HERO (Título con animación de entrada limpia)
+   HERO
    ============================================= */
 .hero-lp {
     padding: 120px 0 80px; min-height: 80vh; display: flex; align-items: center; position: relative; z-index: 1;
@@ -79,7 +79,7 @@ a { text-decoration: none; color: inherit; }
 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .hero-text-lp { display: flex; flex-direction: column; gap: 24px; }
 
-/* Animación de entrada limpia para el título */
+/* Animación de entrada para el título */
 .hero-title-lp {
     font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px;
     opacity: 0;
@@ -100,7 +100,7 @@ a { text-decoration: none; color: inherit; }
 .btn-hero-secondary:hover { background: rgba(255,255,255,0.05); }
 
 /* =============================================
-   LENTE (Animación agresiva con scroll)
+   LENTE
    ============================================= */
 .hero-visual-lp { display: flex; justify-content: center; align-items: center; perspective: 800px; }
 .camera-lens {
@@ -120,7 +120,7 @@ a { text-decoration: none; color: inherit; }
 .lens-glare { position: absolute; top: -10%; left: -10%; width: 60%; height: 60%; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); transform: rotate(-30deg); pointer-events: none; z-index: 4; }
 
 /* =============================================
-   SERVICES (Desktop)
+   SERVICES (Desktop & Mobile Vertical con animación)
    ============================================= */
 .services-lp { padding: 80px 0; position: relative; z-index: 1; }
 .section-header-lp { text-align: center; max-width: 600px; margin: 0 auto 48px; }
@@ -128,15 +128,11 @@ a { text-decoration: none; color: inherit; }
 .section-title-lp { font-size: 2.5rem; font-weight: 700; letter-spacing: -1px; }
 .section-desc-lp { font-size: 0.95rem; color: var(--text-muted); }
 
-.services-scroll-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--brand-red) var(--surface); -webkit-overflow-scrolling: touch; }
-.services-scroll-wrapper::-webkit-scrollbar { height: 4px; }
-.services-scroll-wrapper::-webkit-scrollbar-track { background: var(--surface); border-radius: 10px; }
-.services-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--brand-red); border-radius: 10px; }
-
+.services-scroll-wrapper { width: 100%; overflow: visible; }
 .services-grid-lp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 /* =============================================
-   INTERVIEWS (Desktop)
+   INTERVIEWS (Desktop & Mobile con Side-scroll)
    ============================================= */
 .interviews-lp { padding: 80px 0; position: relative; z-index: 1; }
 .interviews-scroll-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--brand-red) var(--surface); -webkit-overflow-scrolling: touch; }
@@ -153,7 +149,7 @@ a { text-decoration: none; color: inherit; }
 .interview-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
 
 /* =============================================
-   ANIMACIONES DE ENTRADA (REBOTE AGRESIVO)
+   ANIMACIONES DE ENTRADA (Rebote suave con scroll)
    ============================================= */
 .service-card-lp, .interview-card {
     opacity: 0;
@@ -205,7 +201,7 @@ a { text-decoration: none; color: inherit; }
 .footer-links-lp .sep { color: var(--border); }
 
 /* =============================================
-   RESPONSIVE - CARRUSEL CON SNAP EN MÓVIL (Corregido: Solo scroll lateral)
+   RESPONSIVE
    ============================================= */
 @media (max-width: 768px) {
     .header-lp { padding: 12px 0; }
@@ -218,48 +214,45 @@ a { text-decoration: none; color: inherit; }
     .camera-lens { width: 260px; height: 260px; }
     .core-logo-img { width: 70%; max-width: 140px; }
 
-    /* ===== SERVICES CAROUSEL (Only side scroll) ===== */
+    /* ===== SERVICES - VERTICAL CON ANIMACIÓN (SIN SIDE-SCROLL) ===== */
     .services-scroll-wrapper {
-        margin: 0 -24px;
-        padding-left: 24px;
-        padding-right: 24px;
-        padding-bottom: 16px;
-        scroll-snap-type: x mandatory;
-        scroll-padding: 24px;
-        overflow-x: auto;
-        overflow-y: hidden; /* 🔥 EVITA EL SCROLL VERTICAL */
+        margin: 0;
+        padding: 0;
+        overflow: visible; /* Eliminamos el scroll */
+        scroll-snap-type: none;
+        scroll-padding: 0;
     }
     .services-grid-lp {
-        grid-template-columns: none;
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr; /* Se apilan verticalmente */
+        width: 100%;
         gap: 16px;
-        width: max-content;
     }
     .service-card-lp {
-        width: 240px;
-        min-width: 240px;
+        width: 100%;
+        min-width: 0;
+        padding: 28px 20px;
+        scroll-snap-align: none;
         height: auto;
         min-height: auto;
-        padding: 28px 20px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
         gap: 8px;
-        scroll-snap-align: start;
     }
     .service-card-lp h3 { font-size: 1rem; }
     .service-card-lp p { font-size: 0.85rem; line-height: 1.5; }
 
-    /* ===== INTERVIEWS CAROUSEL (Only side scroll) ===== */
+    /* ===== INTERVIEWS - CARRUSEL LATERAL (CONSERVADO) ===== */
     .interviews-scroll-wrapper {
         margin: 0 -24px;
         padding-left: 24px;
         padding-right: 24px;
+        overflow-x: auto;
+        overflow-y: hidden;
         scroll-snap-type: x mandatory;
         scroll-padding: 24px;
-        overflow-x: auto;
-        overflow-y: hidden; /* 🔥 EVITA EL SCROLL VERTICAL */
     }
     .interview-card {
         min-width: 280px;
