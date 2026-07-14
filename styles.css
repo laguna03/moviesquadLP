@@ -132,7 +132,7 @@ a { text-decoration: none; color: inherit; }
 .services-grid-lp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 /* =============================================
-   INTERVIEWS (Desktop & Mobile con Side-scroll)
+   CONTENIDO DESTACADO (Desktop & Mobile con Side-scroll)
    ============================================= */
 .interviews-lp { padding: 80px 0; position: relative; z-index: 1; }
 .interviews-scroll-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--brand-red) var(--surface); -webkit-overflow-scrolling: touch; }
@@ -214,17 +214,17 @@ a { text-decoration: none; color: inherit; }
     .camera-lens { width: 260px; height: 260px; }
     .core-logo-img { width: 70%; max-width: 140px; }
 
-    /* ===== SERVICES - VERTICAL CON ANIMACIÓN (SIN SIDE-SCROLL) ===== */
+    /* ===== SERVICES - VERTICAL CON ANIMACIÓN ===== */
     .services-scroll-wrapper {
         margin: 0;
         padding: 0;
-        overflow: visible; /* Eliminamos el scroll */
+        overflow: visible;
         scroll-snap-type: none;
         scroll-padding: 0;
     }
     .services-grid-lp {
         display: grid;
-        grid-template-columns: 1fr; /* Se apilan verticalmente */
+        grid-template-columns: 1fr;
         width: 100%;
         gap: 16px;
     }
@@ -244,7 +244,7 @@ a { text-decoration: none; color: inherit; }
     .service-card-lp h3 { font-size: 1rem; }
     .service-card-lp p { font-size: 0.85rem; line-height: 1.5; }
 
-    /* ===== INTERVIEWS - CARRUSEL LATERAL (CONSERVADO) ===== */
+    /* ===== CONTENIDO DESTACADO - CARRUSEL LATERAL ===== */
     .interviews-scroll-wrapper {
         margin: 0 -24px;
         padding-left: 24px;
