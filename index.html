@@ -12,7 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- ESTA ES LA LÍNEA QUE CONECTA EL CSS -->
     <link rel="stylesheet" href="styles.css">
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -34,6 +33,7 @@
             </div>
             <nav class="nav-lp">
                 <a href="#services" class="nav-link-lp" data-i18n="nav.services">Servicios</a>
+                <a href="#interviews" class="nav-link-lp" data-i18n="nav.interviews">Entrevistas</a>
                 <a href="#contact" class="nav-cta-lp" data-i18n="nav.cta">Cotizar</a>
             </nav>
         </div>
@@ -41,6 +41,9 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero-lp" id="home">
+        <!-- Fondo con líneas de película (Scanlines) -->
+        <div class="film-scanlines"></div>
+
         <div class="container hero-grid">
             <div class="hero-text-lp">
                 <h1 class="hero-title-lp">
@@ -58,11 +61,12 @@
             </div>
 
             <div class="hero-visual-lp">
-                <div class="camera-lens">
+                <!-- El lente con un ID para la animación agresiva -->
+                <div class="camera-lens" id="cameraLens">
                     <div class="lens-body"></div>
-                    <div class="lens-ring focus-ring-1"></div>
-                    <div class="lens-ring focus-ring-2"></div>
-                    <div class="lens-ring focus-ring-3"></div>
+                    <div class="lens-ring focus-ring-1 ring-1"></div>
+                    <div class="lens-ring focus-ring-2 ring-2"></div>
+                    <div class="lens-ring focus-ring-3 ring-3"></div>
                     <div class="lens-core">
                         <img src="moviesquad-logo.png" alt="Movie Squad PR" class="core-logo-img">
                         <div class="lens-glare"></div>
@@ -83,26 +87,84 @@
 
             <div class="services-scroll-wrapper">
                 <div class="services-grid-lp">
-                    <div class="service-card-lp">
+                    <div class="service-card-lp animate-on-scroll">
                         <div class="service-icon-lp">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="8" cy="16" r="2"></circle></svg>
                         </div>
                         <h3 data-i18n="services.s1.title">Reseñas de Cine</h3>
                         <p data-i18n="services.s1.desc">Críticas profundas y honestas que destacan las fortalezas artísticas y técnicas de tu obra.</p>
                     </div>
-                    <div class="service-card-lp">
+                    <div class="service-card-lp animate-on-scroll">
                         <div class="service-icon-lp">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><line x1="8" y1="10" x2="16" y2="10"></line><line x1="8" y1="14" x2="14" y2="14"></line></svg>
                         </div>
                         <h3 data-i18n="services.s2.title">Entrevistas Exclusivas</h3>
                         <p data-i18n="services.s2.desc">Charlas íntimas con tu equipo creativo para conectar con la audiencia.</p>
                     </div>
-                    <div class="service-card-lp">
+                    <div class="service-card-lp animate-on-scroll">
                         <div class="service-icon-lp">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 2.72h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         </div>
                         <h3 data-i18n="services.s3.title">Promoción Digital</h3>
                         <p data-i18n="services.s3.desc">Estrategia de contenido para redes sociales y plataformas de streaming.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ENTREVISTAS ===== -->
+    <section class="interviews-lp" id="interviews">
+        <div class="container">
+            <div class="section-header-lp">
+                <span class="section-tag-lp" data-i18n="interviews.tag">Nuestro trabajo</span>
+                <h2 class="section-title-lp" data-i18n="interviews.title">Entrevistas <span class="gradient">recientes</span></h2>
+                <p class="section-desc-lp" data-i18n="interviews.desc">Mira algunos de los proyectos que hemos promocionado.</p>
+            </div>
+
+            <div class="interviews-scroll-wrapper">
+                <div class="interviews-grid">
+                    <!-- Video 1 -->
+                    <div class="interview-card animate-on-scroll">
+                        <div class="video-wrapper">
+                            <iframe
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                title="Entrevista 1"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <h3>Entrevista con Director</h3>
+                        <p>Una charla profunda sobre su proceso creativo.</p>
+                    </div>
+                    <!-- Video 2 -->
+                    <div class="interview-card animate-on-scroll">
+                        <div class="video-wrapper">
+                            <iframe
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                title="Entrevista 2"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <h3>Detrás de cámaras</h3>
+                        <p>El making-of de un cortometraje independiente.</p>
+                    </div>
+                    <!-- Video 3 -->
+                    <div class="interview-card animate-on-scroll">
+                        <div class="video-wrapper">
+                            <iframe
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                title="Entrevista 3"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <h3>Reseña de película</h3>
+                        <p>Análisis crítico de un estreno reciente.</p>
                     </div>
                 </div>
             </div>
@@ -189,7 +251,6 @@
         </div>
     </footer>
 
-    <!-- ESTA ES LA LÍNEA QUE CONECTA EL JS -->
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,10 +1,11 @@
 /* =============================================
-   DICCIONARIO DE TRADUCCIONES (ES / EN)
+   DICCIONARIO DE TRADUCCIONES
    ============================================= */
 const translations = {
     es: {
         'site.title': 'Movie Squad PR | Promoción Cinematográfica',
         'nav.services': 'Servicios',
+        'nav.interviews': 'Entrevistas',
         'nav.cta': 'Cotizar',
         'hero.title1': 'Tu obra',
         'hero.title2': 'merece ser vista',
@@ -20,6 +21,9 @@ const translations = {
         'services.s2.desc': 'Charlas íntimas con tu equipo creativo para conectar con la audiencia.',
         'services.s3.title': 'Promoción Digital',
         'services.s3.desc': 'Estrategia de contenido para redes sociales y plataformas de streaming.',
+        'interviews.tag': 'Nuestro trabajo',
+        'interviews.title': 'Entrevistas recientes',
+        'interviews.desc': 'Mira algunos de los proyectos que hemos promocionado.',
         'contact.tag': 'Hablemos',
         'contact.title': '¿Listo para promocionar tu proyecto?',
         'contact.desc': 'Cuéntanos sobre tu obra cinematográfica y te responderemos con una estrategia personalizada en menos de 24 horas.',
@@ -46,6 +50,7 @@ const translations = {
     en: {
         'site.title': 'Movie Squad PR | Film Promotion',
         'nav.services': 'Services',
+        'nav.interviews': 'Interviews',
         'nav.cta': 'Quote',
         'hero.title1': 'Your work',
         'hero.title2': 'deserves to be seen',
@@ -61,6 +66,9 @@ const translations = {
         'services.s2.desc': 'Intimate talks with your creative team to connect with the audience.',
         'services.s3.title': 'Digital Promotion',
         'services.s3.desc': 'Content strategy for social media and streaming platforms.',
+        'interviews.tag': 'Our work',
+        'interviews.title': 'Recent interviews',
+        'interviews.desc': 'Check out some of the projects we have promoted.',
         'contact.tag': "Let's Talk",
         'contact.title': 'Ready to promote your project?',
         'contact.desc': 'Tell us about your film work and we will respond with a personalized strategy in less than 24 hours.',
@@ -86,9 +94,6 @@ const translations = {
     }
 };
 
-/* =============================================
-   LÓGICA DE IDIOMA
-   ============================================= */
 let currentLang = localStorage.getItem('lang') || 'es';
 
 function applyTranslations(lang) {
@@ -99,7 +104,6 @@ function applyTranslations(lang) {
             el.textContent = t[key];
         }
     });
-
     document.documentElement.lang = lang;
     document.querySelectorAll('.lang-option').forEach(opt => {
         opt.classList.toggle('active', opt.dataset.lang === lang);
@@ -115,16 +119,61 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTranslations(currentLang);
     });
 
-    /* =============================================
-       NAVBAR SCROLL
-       ============================================= */
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
         header.classList.toggle('scrolled', window.scrollY > 40);
     });
 
     /* =============================================
-       EMAILJS (Formulario de contacto)
+       ANIMACIÓN AGRESIVA DEL LENTE (Scroll)
+       ============================================= */
+    const lens = document.getElementById('cameraLens');
+    const ring1 = document.querySelector('.ring-1');
+    const ring2 = document.querySelector('.ring-2');
+    const ring3 = document.querySelector('.ring-3');
+
+    if (lens) {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = Math.min(scrollY / maxScroll, 1);
+
+            // Movimientos agresivos y notables:
+            // El lente baja 300px, gira hasta 90 grados y escala hasta 1.5x
+            const translateY = progress * 300;
+            const rotateZ = progress * 90;
+            const scale = 1 + progress * 0.5;
+
+            lens.style.transform = `translateY(${translateY}px) rotateZ(${rotateZ}deg) scale(${scale})`;
+
+            // Aplicar velocidades diferentes a cada anillo (efecto warp/zoom)
+            if(ring1) ring1.style.transform = `rotateZ(${rotateZ * 1.2}deg) scale(${1 + progress * 0.3})`;
+            if(ring2) ring2.style.transform = `rotateZ(${rotateZ * 0.8}deg) scale(${1 + progress * 0.4})`;
+            if(ring3) ring3.style.transform = `rotateZ(${rotateZ * 1.5}deg) scale(${1 + progress * 0.2})`;
+        });
+    }
+
+    /* =============================================
+       ANIMACIÓN DE ENTRADA (Rebote agresivo)
+       ============================================= */
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Añadir un pequeño retraso entre cada tarjeta para que aparezcan en cascada
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 100);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    animatedElements.forEach(el => observer.observe(el));
+
+    /* =============================================
+       EMAILJS (Formulario)
        ============================================= */
     const EMAILJS_SERVICE_ID = 'service_2fjziv9';
     const EMAILJS_TEMPLATE_ID = 'template_saxwave';
