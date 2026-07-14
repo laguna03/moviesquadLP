@@ -79,7 +79,7 @@ a { text-decoration: none; color: inherit; }
 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .hero-text-lp { display: flex; flex-direction: column; gap: 24px; }
 
-/* ✨ Nueva animación limpia para el título */
+/* Animación de entrada limpia para el título */
 .hero-title-lp {
     font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px;
     opacity: 0;
@@ -120,7 +120,7 @@ a { text-decoration: none; color: inherit; }
 .lens-glare { position: absolute; top: -10%; left: -10%; width: 60%; height: 60%; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); transform: rotate(-30deg); pointer-events: none; z-index: 4; }
 
 /* =============================================
-   SERVICES
+   SERVICES (Desktop)
    ============================================= */
 .services-lp { padding: 80px 0; position: relative; z-index: 1; }
 .section-header-lp { text-align: center; max-width: 600px; margin: 0 auto 48px; }
@@ -136,7 +136,7 @@ a { text-decoration: none; color: inherit; }
 .services-grid-lp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 /* =============================================
-   INTERVIEWS
+   INTERVIEWS (Desktop)
    ============================================= */
 .interviews-lp { padding: 80px 0; position: relative; z-index: 1; }
 .interviews-scroll-wrapper { width: 100%; overflow-x: auto; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--brand-red) var(--surface); -webkit-overflow-scrolling: touch; }
@@ -205,7 +205,7 @@ a { text-decoration: none; color: inherit; }
 .footer-links-lp .sep { color: var(--border); }
 
 /* =============================================
-   RESPONSIVE
+   RESPONSIVE - CARRUSEL CON SNAP EN MÓVIL
    ============================================= */
 @media (max-width: 768px) {
     .header-lp { padding: 12px 0; }
@@ -218,20 +218,59 @@ a { text-decoration: none; color: inherit; }
     .camera-lens { width: 260px; height: 260px; }
     .core-logo-img { width: 70%; max-width: 140px; }
 
-    .services-scroll-wrapper { margin: 0 -24px; padding-left: 24px; padding-right: 24px; padding-bottom: 16px; }
-    .services-grid-lp { grid-template-columns: none; display: flex; gap: 16px; width: max-content; }
-    .service-card-lp { width: 240px; min-width: 240px; height: auto; min-height: auto; padding: 28px 20px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 8px; }
+    /* ===== SERVICES CAROUSEL ===== */
+    .services-scroll-wrapper {
+        margin: 0 -24px;
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-bottom: 16px;
+        scroll-snap-type: x mandatory;   /* 🔥 Activa el snap en el contenedor */
+        scroll-padding: 24px;            /* 🔥 Alinea el padding con el inicio */
+    }
+    .services-grid-lp {
+        grid-template-columns: none;
+        display: flex;
+        gap: 16px;
+        width: max-content;
+    }
+    .service-card-lp {
+        width: 240px;
+        min-width: 240px;
+        height: auto;
+        min-height: auto;
+        padding: 28px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        scroll-snap-align: start;        /* 🔥 La tarjeta encaja al inicio */
+    }
     .service-card-lp h3 { font-size: 1rem; }
     .service-card-lp p { font-size: 0.85rem; line-height: 1.5; }
 
-    .interviews-scroll-wrapper { margin: 0 -24px; padding-left: 24px; padding-right: 24px; }
-    .interview-card { min-width: 280px; max-width: 280px; padding: 16px; }
+    /* ===== INTERVIEWS CAROUSEL ===== */
+    .interviews-scroll-wrapper {
+        margin: 0 -24px;
+        padding-left: 24px;
+        padding-right: 24px;
+        scroll-snap-type: x mandatory;   /* 🔥 Activa el snap en el contenedor */
+        scroll-padding: 24px;            /* 🔥 Alinea el padding con el inicio */
+    }
+    .interview-card {
+        min-width: 280px;
+        max-width: 280px;
+        padding: 16px;
+        scroll-snap-align: start;        /* 🔥 La tarjeta encaja al inicio */
+    }
 
+    /* ===== CONTACT ===== */
     .contact-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .contact-text-lp { align-items: center; }
     .contact-perks-lp { align-items: center; }
     .contact-form-lp { justify-content: center; }
     .form-card-lp { max-width: 100%; }
     .form-row-lp { grid-template-columns: 1fr; gap: 12px; }
+
     .footer-container { flex-direction: column; gap: 8px; text-align: center; }
 }
