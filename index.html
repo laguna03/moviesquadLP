@@ -41,9 +41,7 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero-lp" id="home">
-        <!-- Fondo con líneas de película (Scanlines) -->
         <div class="film-scanlines"></div>
-
         <div class="container hero-grid">
             <div class="hero-text-lp">
                 <h1 class="hero-title-lp">
@@ -61,7 +59,6 @@
             </div>
 
             <div class="hero-visual-lp">
-                <!-- El lente con un ID para la animación agresiva -->
                 <div class="camera-lens" id="cameraLens">
                     <div class="lens-body"></div>
                     <div class="lens-ring focus-ring-1 ring-1"></div>
@@ -113,7 +110,7 @@
         </div>
     </section>
 
-    <!-- ===== CONTENIDO DESTACADO (5 espacios) ===== -->
+    <!-- ===== CONTENIDO DESTACADO (5 videos - NUEVO DISEÑO LADO A LADO) ===== -->
     <section class="interviews-lp" id="interviews">
         <div class="container">
             <div class="section-header-lp">
@@ -122,87 +119,92 @@
                 <p class="section-desc-lp" data-i18n="interviews.desc">Mira algunos de los proyectos que hemos promocionado.</p>
             </div>
 
-            <div class="interviews-scroll-wrapper">
+            <div class="interviews-scroll-wrapper" id="rouletteWrapper">
                 <div class="interviews-grid">
 
                     <!-- 1. ENTREVISTA 1 -->
                     <div class="interview-card animate-on-scroll">
                         <div class="video-wrapper">
-                            <!-- 🖼️ CAMBIAR: Reemplaza el src con el link de tu video -->
                             <iframe
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                src="https://www.youtube.com/embed/vNrS_oOERDY"
                                 title="Entrevista con Director"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen>
                             </iframe>
                         </div>
-                        <h3>Entrevista con Director</h3>
-                        <p>Una charla profunda sobre su proceso creativo.</p>
+                        <div class="card-text-content">
+                            <h3>Entrevista con Director</h3>
+                            <p>Una charla profunda sobre su proceso creativo.</p>
+                        </div>
                     </div>
 
                     <!-- 2. RESEÑA 1 -->
                     <div class="interview-card animate-on-scroll">
                         <div class="video-wrapper">
-                            <!-- 🖼️ CAMBIAR: Reemplaza el src con el link de tu video -->
                             <iframe
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                src="https://www.youtube.com/embed/M_kVToC3I5I"
                                 title="Reseña: Cortometraje 'Sombras'"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen>
                             </iframe>
                         </div>
-                        <h3>Reseña: Cortometraje "Sombras"</h3>
-                        <p>Análisis crítico y honesto de esta obra independiente.</p>
+                        <div class="card-text-content">
+                            <h3>Reseña: Cortometraje "Sombras"</h3>
+                            <p>Análisis crítico y honesto de esta obra independiente.</p>
+                        </div>
                     </div>
 
                     <!-- 3. LO MEJOR DE ENERO 2026 -->
                     <div class="interview-card animate-on-scroll">
                         <div class="video-wrapper">
-                            <!-- 🖼️ CAMBIAR: Reemplaza el src con el link de tu video -->
                             <iframe
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                src="https://www.youtube.com/embed/Tn9IIDJATcg"
                                 title="Lo mejor de Enero 2026"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen>
                             </iframe>
                         </div>
-                        <h3>Lo mejor de Enero 2026</h3>
-                        <p>Un resumen imperdible de los estrenos cinematográficos más destacados del mes.</p>
+                        <div class="card-text-content">
+                            <h3>Lo mejor de Enero 2026</h3>
+                            <p>Un resumen imperdible de los estrenos cinematográficos más destacados del mes.</p>
+                        </div>
                     </div>
 
                     <!-- 4. ENTREVISTA 2 -->
                     <div class="interview-card animate-on-scroll">
                         <div class="video-wrapper">
-                            <!-- 🖼️ CAMBIAR: Reemplaza el src con el link de tu video -->
                             <iframe
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                src="https://www.youtube.com/embed/fcXZbfpIvfY"
                                 title="Entrevista con Productora"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen>
                             </iframe>
                         </div>
-                        <h3>Entrevista con Productora</h3>
-                        <p>Detalles exclusivos sobre la producción de un documental cultural.</p>
+                        <div class="card-text-content">
+                            <h3>Entrevista con Productora</h3>
+                            <p>Detalles exclusivos sobre la producción de un documental cultural.</p>
+                        </div>
                     </div>
 
                     <!-- 5. RESEÑA 2 -->
                     <div class="interview-card animate-on-scroll">
                         <div class="video-wrapper">
-                            <!-- 🖼️ CAMBIAR: Reemplaza el src con el link de tu video -->
                             <iframe
-                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                src="https://www.youtube.com/embed/zoI-WvURCAo"
                                 title="Reseña: Documental 'Raíces'"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen>
                             </iframe>
                         </div>
-                        <h3>Reseña: Documental "Raíces"</h3>
-                        <p>Una mirada profunda a este proyecto cinematográfico puertorriqueño.</p>
+                        <div class="card-text-content">
+                            <h3>Reseña: Documental "Raíces"</h3>
+                            <p>Una mirada profunda a este proyecto cinematográfico puertorriqueño.</p>
+                        </div>
                     </div>
 
                 </div>

@@ -26,7 +26,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* =============================================
-   SCANLINES (Película)
+   SCANLINES
    ============================================= */
 .film-scanlines {
     position: fixed; inset: 0; pointer-events: none; z-index: 0;
@@ -48,23 +48,14 @@ a { text-decoration: none; color: inherit; }
 .header-lp.scrolled {
     background: rgba(8,8,10,0.8); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
 }
-.header-container {
-    display: flex; align-items: center; justify-content: space-between;
-}
+.header-container { display: flex; align-items: center; justify-content: space-between; }
 .header-left { display: flex; align-items: center; gap: 16px; }
 .nav-lp { display: flex; gap: 24px; align-items: center; margin-left: auto; }
 .nav-link-lp { font-size: 0.85rem; color: var(--text-muted); transition: 0.3s; }
 .nav-link-lp:hover { color: var(--text); }
 .nav-cta-lp { background: var(--brand-red); color: #fff; padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 500; transition: 0.3s; }
 .nav-cta-lp:hover { background: #C62836; }
-
-.lang-toggle {
-    display: flex; align-items: center; gap: 4px;
-    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-    border-radius: 50px; padding: 4px 12px; cursor: pointer;
-    font-family: var(--ff); font-size: 0.7rem; font-weight: 600;
-    color: var(--text-muted); transition: 0.3s;
-}
+.lang-toggle { display: flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 50px; padding: 4px 12px; cursor: pointer; font-family: var(--ff); font-size: 0.7rem; font-weight: 600; color: var(--text-muted); transition: 0.3s; }
 .lang-toggle:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
 .lang-option { transition: color 0.3s; }
 .lang-option.active { color: var(--text); }
@@ -73,24 +64,11 @@ a { text-decoration: none; color: inherit; }
 /* =============================================
    HERO
    ============================================= */
-.hero-lp {
-    padding: 120px 0 80px; min-height: 80vh; display: flex; align-items: center; position: relative; z-index: 1;
-}
+.hero-lp { padding: 120px 0 80px; min-height: 80vh; display: flex; align-items: center; position: relative; z-index: 1; }
 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .hero-text-lp { display: flex; flex-direction: column; gap: 24px; }
-
-/* Animación de entrada para el título */
-.hero-title-lp {
-    font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px;
-    opacity: 0;
-    transform: translateY(40px) scale(0.95);
-    animation: titleReveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    animation-delay: 0.2s;
-}
-@keyframes titleReveal {
-    0% { opacity: 0; transform: translateY(40px) scale(0.95); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
-}
+.hero-title-lp { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px; opacity: 0; transform: translateY(40px) scale(0.95); animation: titleReveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; animation-delay: 0.2s; }
+@keyframes titleReveal { 0% { opacity: 0; transform: translateY(40px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
 .hero-title-lp .light { color: var(--text); }
 .hero-desc-lp { font-size: 1rem; color: var(--text-muted); max-width: 450px; line-height: 1.8; }
 .hero-actions-lp { display: flex; gap: 16px; flex-wrap: wrap; }
@@ -103,13 +81,7 @@ a { text-decoration: none; color: inherit; }
    LENTE
    ============================================= */
 .hero-visual-lp { display: flex; justify-content: center; align-items: center; perspective: 800px; }
-.camera-lens {
-    position: relative; width: 320px; height: 320px; border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, #1E1E20, #0A0A0C 60%, #050507);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 20px 60px rgba(0,0,0,0.9), inset 0 0 40px rgba(0,0,0,0.8);
-    transition: transform 0.1s ease-out;
-    will-change: transform;
-}
+.camera-lens { position: relative; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #1E1E20, #0A0A0C 60%, #050507); box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 20px 60px rgba(0,0,0,0.9), inset 0 0 40px rgba(0,0,0,0.8); transition: transform 0.1s ease-out; will-change: transform; }
 .lens-body { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.04) 0%, transparent 60%); pointer-events: none; z-index: 1; }
 .lens-ring { position: absolute; border-radius: 50%; pointer-events: none; z-index: 2; transition: transform 0.15s ease-out; will-change: transform; }
 .focus-ring-1 { inset: 8px; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 0 10px rgba(0,0,0,0.5) inset; }
@@ -120,7 +92,7 @@ a { text-decoration: none; color: inherit; }
 .lens-glare { position: absolute; top: -10%; left: -10%; width: 60%; height: 60%; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); transform: rotate(-30deg); pointer-events: none; z-index: 4; }
 
 /* =============================================
-   SERVICES (Desktop & Mobile Vertical con animación)
+   SERVICES
    ============================================= */
 .services-lp { padding: 80px 0; position: relative; z-index: 1; }
 .section-header-lp { text-align: center; max-width: 600px; margin: 0 auto 48px; }
@@ -132,24 +104,98 @@ a { text-decoration: none; color: inherit; }
 .services-grid-lp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 /* =============================================
-   CONTENIDO DESTACADO (Desktop & Mobile con Side-scroll)
+   CONTENIDO DESTACADO (RULETA + LADO A LADO)
    ============================================= */
 .interviews-lp { padding: 80px 0; position: relative; z-index: 1; }
-.interviews-scroll-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--brand-red) var(--surface); -webkit-overflow-scrolling: touch; }
+.interviews-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--brand-red) var(--surface);
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory; /* 🔥 Activa el snap */
+}
 .interviews-scroll-wrapper::-webkit-scrollbar { height: 4px; }
 .interviews-scroll-wrapper::-webkit-scrollbar-track { background: var(--surface); border-radius: 10px; }
 .interviews-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--brand-red); border-radius: 10px; }
 
-.interviews-grid { display: flex; gap: 24px; width: max-content; padding: 0 24px; }
-.interview-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; min-width: 320px; max-width: 320px; text-align: center; transition: 0.3s; }
+.interviews-grid {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    padding: 0 24px;
+    /* Centrado del primer elemento en escritorio */
+}
+
+/* 📺 LADO A LADO EN ESCRITORIO */
+.interview-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    min-width: 320px;
+    max-width: 320px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-snap-align: start;
+}
 .interview-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px) scale(1.02); }
-.video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
+.video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 8px; overflow: hidden; }
 .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 .interview-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
 .interview-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
 
+/* 📱 Ajustes para escritorio (A partir de 769px) */
+@media (min-width: 769px) {
+    .interviews-grid {
+        padding: 0 calc(50% - 320px); /* Centra el primer elemento visualmente */
+    }
+    .interview-card {
+        min-width: 640px;  /* Más ancho para acomodar video+texto */
+        max-width: 640px;
+        flex-direction: row; /* 🔥 Video y texto LADO A LADO */
+        align-items: center;
+        text-align: left;
+        padding: 16px 20px;
+        scroll-snap-align: center; /* 🔥 La ruleta encaja al CENTRO */
+        gap: 20px;
+    }
+    .video-wrapper {
+        flex: 0 0 45%;       /* Video ocupa el 45% */
+        padding-bottom: 0;   /* Quitamos el padding-bottom viejo */
+        aspect-ratio: 16 / 9; /* Mantenemos la proporción */
+        margin-bottom: 0;
+    }
+    .card-text-content {
+        flex: 1;             /* Texto ocupa el resto del espacio */
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .card-text-content h3 { font-size: 1.2rem; }
+    .card-text-content p { font-size: 0.9rem; line-height: 1.6; }
+
+    /* 🔥 LA TARJETA ACTIVA (CENTRO DE LA RULETA) */
+    .interview-card.active {
+        transform: scale(1.03) translateY(-4px);
+        border-color: var(--brand-red);
+        box-shadow: 0 0 40px rgba(230,57,70,0.15);
+        z-index: 2;
+        background: rgba(20, 20, 22, 0.95);
+    }
+    .interview-card:not(.active) {
+        opacity: 0.8;
+        transform: scale(0.95);
+    }
+}
+
 /* =============================================
-   ANIMACIONES DE ENTRADA (Rebote suave con scroll)
+   ANIMACIONES DE ENTRADA (Rebote)
    ============================================= */
 .service-card-lp, .interview-card {
     opacity: 0;
@@ -162,7 +208,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* =============================================
-   CONTACT
+   CONTACT & FOOTER
    ============================================= */
 .contact-lp { padding: 80px 0; border-top: 1px solid var(--border); position: relative; z-index: 1; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -201,7 +247,7 @@ a { text-decoration: none; color: inherit; }
 .footer-links-lp .sep { color: var(--border); }
 
 /* =============================================
-   RESPONSIVE
+   RESPONSIVE (Móvil)
    ============================================= */
 @media (max-width: 768px) {
     .header-lp { padding: 12px 0; }
@@ -214,60 +260,21 @@ a { text-decoration: none; color: inherit; }
     .camera-lens { width: 260px; height: 260px; }
     .core-logo-img { width: 70%; max-width: 140px; }
 
-    /* ===== SERVICES - VERTICAL CON ANIMACIÓN ===== */
-    .services-scroll-wrapper {
-        margin: 0;
-        padding: 0;
-        overflow: visible;
-        scroll-snap-type: none;
-        scroll-padding: 0;
-    }
-    .services-grid-lp {
-        display: grid;
-        grid-template-columns: 1fr;
-        width: 100%;
-        gap: 16px;
-    }
-    .service-card-lp {
-        width: 100%;
-        min-width: 0;
-        padding: 28px 20px;
-        scroll-snap-align: none;
-        height: auto;
-        min-height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 8px;
-    }
+    .services-scroll-wrapper { margin: 0; padding: 0; overflow: visible; scroll-snap-type: none; }
+    .services-grid-lp { display: grid; grid-template-columns: 1fr; width: 100%; gap: 16px; }
+    .service-card-lp { width: 100%; min-width: 0; padding: 28px 20px; scroll-snap-align: none; height: auto; display: flex; flex-direction: column; gap: 8px; }
     .service-card-lp h3 { font-size: 1rem; }
     .service-card-lp p { font-size: 0.85rem; line-height: 1.5; }
 
-    /* ===== CONTENIDO DESTACADO - CARRUSEL LATERAL ===== */
-    .interviews-scroll-wrapper {
-        margin: 0 -24px;
-        padding-left: 24px;
-        padding-right: 24px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        scroll-padding: 24px;
-    }
-    .interview-card {
-        min-width: 280px;
-        max-width: 280px;
-        padding: 16px;
-        scroll-snap-align: start;
-    }
+    .interviews-scroll-wrapper { margin: 0 -24px; padding-left: 24px; padding-right: 24px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-padding: 24px; }
+    .interview-card { min-width: 280px; max-width: 280px; padding: 16px; scroll-snap-align: start; flex-direction: column; } /* En móvil, el texto vuelve a estar abajo */
+    .card-text-content { width: 100%; text-align: center; }
 
-    /* ===== CONTACT ===== */
     .contact-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .contact-text-lp { align-items: center; }
     .contact-perks-lp { align-items: center; }
     .contact-form-lp { justify-content: center; }
     .form-card-lp { max-width: 100%; }
     .form-row-lp { grid-template-columns: 1fr; gap: 12px; }
-
     .footer-container { flex-direction: column; gap: 8px; text-align: center; }
 }
