@@ -138,15 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
             const progress = Math.min(scrollY / maxScroll, 1);
 
-            // Movimientos agresivos y notables:
-            // El lente baja 300px, gira hasta 90 grados y escala hasta 1.5x
             const translateY = progress * 300;
             const rotateZ = progress * 90;
             const scale = 1 + progress * 0.5;
 
             lens.style.transform = `translateY(${translateY}px) rotateZ(${rotateZ}deg) scale(${scale})`;
 
-            // Aplicar velocidades diferentes a cada anillo (efecto warp/zoom)
             if(ring1) ring1.style.transform = `rotateZ(${rotateZ * 1.2}deg) scale(${1 + progress * 0.3})`;
             if(ring2) ring2.style.transform = `rotateZ(${rotateZ * 0.8}deg) scale(${1 + progress * 0.4})`;
             if(ring3) ring3.style.transform = `rotateZ(${rotateZ * 1.5}deg) scale(${1 + progress * 0.2})`;
@@ -154,23 +151,101 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* =============================================
-       ANIMACIÓN DE ENTRADA (Rebote agresivo)
+       ANIMACIÓN DE ENTRADA (Rebote)
        ============================================= */
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
-
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                // Añadir un pequeño retraso entre cada tarjeta para que aparezcan en cascada
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 100);
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.2 });
 
     animatedElements.forEach(el => observer.observe(el));
+
+    /* =============================================
+       LÓGICA DE LA RULETA 3D (Tambor de revólver)
+       ============================================= */
+    const track = document.getElementById('rouletteTrack');
+    const items = document.querySelectorAll('.roulette-item');
+    const totalItems = items.length;
+    const anglePerItem = 360 / totalItems; // 72 grados
+    let currentIndex = 0;
+    let autoRotateInterval;
+
+    // Función para actualizar la posición de la ruleta
+    function updateRoulette(index) {
+        // Calculamos el giro del tambor completo
+        const trackRotation = -index * anglePerItem;
+        track.style.transform = `rotateY(${trackRotation}deg)`;
+
+        // Actualizamos la clase 'active' (la "bala") en la tarjeta que queda al frente
+        items.forEach((item, i) => {
+            // Calculamos el ángulo absoluto de esa tarjeta en el mundo
+            const isActive = i === index;
+            item.classList.toggle('active', isActive);
+            // Pasamos el ángulo base al elemento para que el CSS lo sepa y pueda escalar sin romper la rotación 3D
+            const baseAngle = i * anglePerItem;
+            item.style.setProperty('--active-deg', `${baseAngle}deg`);
+        });
+    }
+
+    // Función para ir al siguiente (girar a la derecha)
+    function nextItem() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateRoulette(currentIndex);
+    }
+
+    // Función para ir al anterior (girar a la izquierda)
+    function prevItem() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateRoulette(currentIndex);
+    }
+
+    // Inicializar la ruleta (la primera tarjeta es la "bala")
+    updateRoulette(0);
+
+    // Event Listeners para los botones
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        clearInterval(autoRotateInterval);
+        nextItem();
+        startAutoRotate();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        clearInterval(autoRotateInterval);
+        prevItem();
+        startAutoRotate();
+    });
+
+    // Auto-rotación cada 4 segundos
+    function startAutoRotate() {
+        if (autoRotateInterval) clearInterval(autoRotateInterval);
+        autoRotateInterval = setInterval(() => {
+            nextItem();
+        }, 4000);
+    }
+
+    startAutoRotate();
+
+    // Pausar la auto-rotación cuando el mouse está sobre la ruleta
+    const rouletteContainer = document.getElementById('rouletteContainer');
+    rouletteContainer.addEventListener('mouseenter', () => {
+        clearInterval(autoRotateInterval);
+    });
+    rouletteContainer.addEventListener('mouseleave', () => {
+        startAutoRotate();
+    });
+
+    // Pausar en móvil cuando se toca
+    rouletteContainer.addEventListener('touchstart', () => {
+        clearInterval(autoRotateInterval);
+    });
+    rouletteContainer.addEventListener('touchend', () => {
+        startAutoRotate();
+    });
 
     /* =============================================
        EMAILJS (Formulario)

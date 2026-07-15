@@ -104,107 +104,117 @@ a { text-decoration: none; color: inherit; }
 .services-grid-lp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
 /* =============================================
-   CONTENIDO DESTACADO (RULETA + LADO A LADO)
+   RULETA 3D (Tambor de revólver circular)
    ============================================= */
 .interviews-lp { padding: 80px 0; position: relative; z-index: 1; }
-.interviews-scroll-wrapper {
+.interviews-lp .section-header-lp { margin-bottom: 40px; }
+
+.roulette-3d-container {
+    position: relative;
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 20px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--brand-red) var(--surface);
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory; /* 🔥 Activa el snap */
-}
-.interviews-scroll-wrapper::-webkit-scrollbar { height: 4px; }
-.interviews-scroll-wrapper::-webkit-scrollbar-track { background: var(--surface); border-radius: 10px; }
-.interviews-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--brand-red); border-radius: 10px; }
-
-.interviews-grid {
+    height: 520px; /* Altura fija para acomodar el tambor */
     display: flex;
-    gap: 24px;
-    width: max-content;
-    padding: 0 24px;
-    /* Centrado del primer elemento en escritorio */
+    justify-content: center;
+    align-items: center;
+    perspective: 1100px; /* Profundidad 3D ajustada para el tambor */
+    perspective-origin: 50% 50%;
+    overflow: visible;
 }
 
-/* 📺 LADO A LADO EN ESCRITORIO */
-.interview-card {
+.roulette-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1); /* Rebote suave */
+}
+
+/* Cada tarjeta dentro del cilindro */
+.roulette-item {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 380px;
+    margin-left: -190px; /* Centrado horizontal */
+    margin-top: -200px;  /* Centrado vertical */
+    backface-visibility: hidden;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 20px;
-    min-width: 320px;
-    max-width: 320px;
-    text-align: center;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     flex-direction: column;
     gap: 12px;
-    scroll-snap-align: start;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    /* Posiciones matemáticas para 5 elementos (360 / 5 = 72 grados) */
+    transform: rotateY(0deg) translateZ(260px) scale(0.85);
+    transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 1s, border-color 1s, box-shadow 1s;
+    opacity: 0.6;
 }
-.interview-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px) scale(1.02); }
-.video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 8px; overflow: hidden; }
-.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-.interview-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
-.interview-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+.roulette-item:nth-child(1) { transform: rotateY(0deg) translateZ(260px) scale(0.85); }
+.roulette-item:nth-child(2) { transform: rotateY(72deg) translateZ(260px) scale(0.85); }
+.roulette-item:nth-child(3) { transform: rotateY(144deg) translateZ(260px) scale(0.85); }
+.roulette-item:nth-child(4) { transform: rotateY(216deg) translateZ(260px) scale(0.85); }
+.roulette-item:nth-child(5) { transform: rotateY(288deg) translateZ(260px) scale(0.85); }
 
-/* 📱 Ajustes para escritorio (A partir de 769px) */
-@media (min-width: 769px) {
-    .interviews-grid {
-        padding: 0 calc(50% - 320px); /* Centra el primer elemento visualmente */
-    }
-    .interview-card {
-        min-width: 640px;  /* Más ancho para acomodar video+texto */
-        max-width: 640px;
-        flex-direction: row; /* 🔥 Video y texto LADO A LADO */
-        align-items: center;
-        text-align: left;
-        padding: 16px 20px;
-        scroll-snap-align: center; /* 🔥 La ruleta encaja al CENTRO */
-        gap: 20px;
-    }
-    .video-wrapper {
-        flex: 0 0 45%;       /* Video ocupa el 45% */
-        padding-bottom: 0;   /* Quitamos el padding-bottom viejo */
-        aspect-ratio: 16 / 9; /* Mantenemos la proporción */
-        margin-bottom: 0;
-    }
-    .card-text-content {
-        flex: 1;             /* Texto ocupa el resto del espacio */
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-    .card-text-content h3 { font-size: 1.2rem; }
-    .card-text-content p { font-size: 0.9rem; line-height: 1.6; }
-
-    /* 🔥 LA TARJETA ACTIVA (CENTRO DE LA RULETA) */
-    .interview-card.active {
-        transform: scale(1.03) translateY(-4px);
-        border-color: var(--brand-red);
-        box-shadow: 0 0 40px rgba(230,57,70,0.15);
-        z-index: 2;
-        background: rgba(20, 20, 22, 0.95);
-    }
-    .interview-card:not(.active) {
-        opacity: 0.8;
-        transform: scale(0.95);
-    }
+/* La "Bala" - Tarjeta activa al frente */
+.roulette-item.active {
+    transform: rotateY(var(--active-deg, 0deg)) translateZ(260px) scale(1.12);
+    opacity: 1;
+    border-color: var(--brand-red);
+    box-shadow: 0 0 40px rgba(230,57,70, 0.4), inset 0 0 20px rgba(230,57,70, 0.05);
+    z-index: 10;
+    /* Animación de latido (pulso) de la bala */
+    animation: bulletPulse 2.2s ease-in-out infinite alternate;
 }
+@keyframes bulletPulse {
+    0% { box-shadow: 0 0 20px rgba(230,57,70, 0.2), inset 0 0 10px rgba(230,57,70, 0.02); transform: rotateY(var(--active-deg, 0deg)) translateZ(260px) scale(1.08); }
+    100% { box-shadow: 0 0 60px rgba(230,57,70, 0.5), inset 0 0 30px rgba(230,57,70, 0.05); transform: rotateY(var(--active-deg, 0deg)) translateZ(260px) scale(1.15); }
+}
+
+/* Contenido interno de la tarjeta */
+.roulette-item .video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 8px; overflow: hidden; }
+.roulette-item .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.roulette-item .card-text-content { display: flex; flex-direction: column; gap: 4px; text-align: left; }
+.roulette-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 2px; }
+.roulette-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+
+/* Botones de navegación */
+.roulette-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    color: var(--text-muted);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex; justify-content: center; align-items: center;
+    backdrop-filter: blur(4px);
+}
+.roulette-btn:hover {
+    background: rgba(230,57,70,0.15);
+    border-color: var(--brand-red);
+    color: #fff;
+}
+.roulette-btn.prev { left: -80px; }
+.roulette-btn.next { right: -80px; }
 
 /* =============================================
    ANIMACIONES DE ENTRADA (Rebote)
    ============================================= */
-.service-card-lp, .interview-card {
+.service-card-lp, .roulette-item {
     opacity: 0;
-    transform: translateY(80px) scale(0.9) rotateZ(-5deg);
+    transform: scale(0.9) rotateZ(-5deg);
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.service-card-lp.visible, .interview-card.visible {
+.roulette-item.active, .service-card-lp.visible, .roulette-item.visible {
     opacity: 1;
-    transform: translateY(0) scale(1) rotateZ(0deg);
 }
 
 /* =============================================
@@ -266,9 +276,31 @@ a { text-decoration: none; color: inherit; }
     .service-card-lp h3 { font-size: 1rem; }
     .service-card-lp p { font-size: 0.85rem; line-height: 1.5; }
 
-    .interviews-scroll-wrapper { margin: 0 -24px; padding-left: 24px; padding-right: 24px; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-padding: 24px; }
-    .interview-card { min-width: 280px; max-width: 280px; padding: 16px; scroll-snap-align: start; flex-direction: column; } /* En móvil, el texto vuelve a estar abajo */
-    .card-text-content { width: 100%; text-align: center; }
+    /* Ruleta móvil ajustada */
+    .roulette-3d-container { height: 500px; perspective: 800px; }
+    .roulette-item {
+        width: 260px;
+        margin-left: -130px;
+        margin-top: -160px;
+        transform: rotateY(0deg) translateZ(160px) scale(0.8);
+    }
+    .roulette-item:nth-child(1) { transform: rotateY(0deg) translateZ(160px) scale(0.8); }
+    .roulette-item:nth-child(2) { transform: rotateY(72deg) translateZ(160px) scale(0.8); }
+    .roulette-item:nth-child(3) { transform: rotateY(144deg) translateZ(160px) scale(0.8); }
+    .roulette-item:nth-child(4) { transform: rotateY(216deg) translateZ(160px) scale(0.8); }
+    .roulette-item:nth-child(5) { transform: rotateY(288deg) translateZ(160px) scale(0.8); }
+
+    .roulette-item.active {
+        transform: rotateY(var(--active-deg, 0deg)) translateZ(160px) scale(1.05);
+    }
+    @keyframes bulletPulse {
+        0% { box-shadow: 0 0 20px rgba(230,57,70, 0.3); transform: rotateY(var(--active-deg, 0deg)) translateZ(160px) scale(1.0); }
+        100% { box-shadow: 0 0 40px rgba(230,57,70, 0.6); transform: rotateY(var(--active-deg, 0deg)) translateZ(160px) scale(1.08); }
+    }
+
+    .roulette-btn { width: 40px; height: 40px; font-size: 1.5rem; }
+    .roulette-btn.prev { left: -10px; }
+    .roulette-btn.next { right: -10px; }
 
     .contact-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .contact-text-lp { align-items: center; }
